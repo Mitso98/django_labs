@@ -1,0 +1,17 @@
+body{
+    display: block;
+}
+h1.hello{
+    display: block;
+}
+.title {
+    color: royalblue;
+}
+
+div.writers {
+    display: block;
+    margin: 50px 50px;
+}
+li{
+    padding: 30px 0;
+}

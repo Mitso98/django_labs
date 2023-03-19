@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{author.name}}</title>
+    {%load static%} {% include 'hello_index.html' %}
+    <link rel="stylesheet" href="{%static 'style/authors_style.css'%}" />
+  </head>
+  <body>
+    <div class="hello">{%block content %} {% endblock %}</div>
+    <div class="writers">
+      <h1 class="title">{{author.name}}</h1>
+      <ul>
+        <li>Born at: {%if author.born_at%}{{author.born_at}}{%endif%}</li>
+        <li>Died at: {%if author.died_at%}{{author.died_at}}{%endif%}</li>
+        <li>Contact: {%if author.contact%}{{author.contact}}{%endif%}</li>
+        <li>
+          Books: {%if book.name%}
+          <a href="/books/{{book.id}}"> {{book.name}}</a>
+          {%endif%}
+        </li>
+        <li>Bio: {%if author.bio%}{{author.bio}}{%endif%}</li>
+      </ul>
+    </div>
+  </body>
+</html>
