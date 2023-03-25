@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Question Details</title>
+  </head>
+  <body>
+    <h1>Question text: {{question.question_text}}</h1>
+    <h1>publication date: {{question.pub_date}}</h1>
+    <h1>
+      Votes: {% if question.votes.0.sum%} {{question.votes.0.sum}} {% else %} 0
+      {% endif %}
+    </h1>
+    {% if user.is_authenticated %}
+    <span style="display: flex; justify-content: space-between">
+      <a
+        href="{% url 'up_vote' q_id=question.id user_id=user.id %}"
+        style="text-decoration: none"
+        ><h1>Up +</h1></a
+      >
+      <a
+        href="{% url 'down_vote' q_id=question.id user_id=user.id %}"
+        style="text-decoration: none"
+        ><h1>Down -</h1></a
+      >
+    </span>
+    {% else %}
+    <p>Please <a href="{% url 'login_user' %}">login</a> to be able to vote</p>
+    {% endif %}
+  </body>
+</html>
