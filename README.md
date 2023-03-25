@@ -1,3 +1,3 @@
 # django_labs
 - Solution of Django course
-- Each lab has a README.md file that describes it's features. 
+- Each lab has a README.md file that describes it's features please take a look. 
