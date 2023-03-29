@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'blogs.apps.BlogsConfig',
     'rest_framework_simplejwt',
+    'django_filters',
 
 ]
 

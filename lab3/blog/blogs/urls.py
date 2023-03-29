@@ -16,5 +16,10 @@ urlpatterns = [
         {'delete': 'destroy', 'get': 'retrieve', 'put': 'update', 'patch': 'update'})),
     path('posts', PostViewSet.as_view({'get': 'list', 'post': 'create'})),
     path('comments/<int:post_id>', CommentViewSet.as_view({'get': 'list'})),
-    
+    path('comments/comment/<int:comment_id>',
+         CommentViewSet.as_view({'get': 'retrieve'})),
+    path('comments', CommentViewSet.as_view({'post': 'create'})),
+    path('comments/update/<int:comment_id>',
+         CommentViewSet.as_view({'put': 'update'})),
+    path('comments/delete/<int:comment_id>', CommentViewSet.as_view({'delete': 'destroy'})),
 ]

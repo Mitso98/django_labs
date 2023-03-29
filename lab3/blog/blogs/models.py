@@ -15,7 +15,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     owner = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    post = models.OneToOneField(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     body = models.TextField()
     created_at = models.DateTimeField(auto_now=True)
 
