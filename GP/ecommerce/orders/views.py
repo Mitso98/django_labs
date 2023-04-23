@@ -8,23 +8,25 @@ from .serializers import OrderSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import authentication_classes, permission_classes
 from rest_framework.authentication import TokenAuthentication
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 
 
 @api_view(['GET'])
-@authentication_classes([TokenAuthentication])
+@authentication_classes([TokenAuthentication,SessionAuthentication, BasicAuthentication])
 @permission_classes([IsAuthenticated])
-def order_list(request):
+def order_list(request):    
+    print(request.user)
     user = request.user
     orders = Order.objects.filter(user=user)
     serializer = OrderSerializer(orders, many=True)
     return JsonResponse(serializer.data, safe=False)
 
 @api_view(['GET'])
-@authentication_classes([TokenAuthentication])
+@authentication_classes([TokenAuthentication,SessionAuthentication, BasicAuthentication])
 @permission_classes([IsAuthenticated])
 def order_detail(request, pk):
     user = request.user
-    order = get_object_or_404(Order, pk=pk, user=user)
+    order = get_object_or_404(Order, pk=pk,user=user)
     serializer = OrderSerializer(order)
     return JsonResponse(serializer.data)
 
